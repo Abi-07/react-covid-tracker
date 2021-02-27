@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import axios from 'axios'
 import CovidContext from './covidContext' 
 import CovidReducer from './covidReducer'
@@ -9,8 +9,13 @@ const CovidState = props => {
     const initialState = {
         states: [],
         stateData: {},
+        lastModified: '',
         loading: false
     }
+
+    useEffect(() => {
+        getStates();
+    }, []);
 
     const [state, dispatch] = useReducer(CovidReducer, initialState)
 
@@ -18,11 +23,10 @@ const CovidState = props => {
     // Get All States
     const getStates = async () => {
         setLoading()
-        const res = await axios.get('https://api.covid19india.org/data.json')
-        const states = res.data.statewise
+        const res = await axios.get('https://www.mohfw.gov.in/data/datanew.json')
        dispatch({
            type: GET_STATES,
-           payload: states
+           payload: res
        })
       }
 
@@ -30,8 +34,8 @@ const CovidState = props => {
     const getState = async (index) => {
         // getStates()
         setLoading()
-        const res = await axios.get('https://api.covid19india.org/data.json')
-        const states = res.data.statewise
+        const res = await axios.get('https://www.mohfw.gov.in/data/datanew.json')
+        const states = res.data
         const singleState = states[index];
         dispatch({
             type: GET_STATE,
@@ -48,6 +52,7 @@ const CovidState = props => {
              states: state.states,
              stateData: state.stateData,
              loading: state.loading,
+             lastModified: state.lastModified,
              getStates,
              getState
          }} >

@@ -3,21 +3,25 @@ import Chart from "react-google-charts";
 
 export class ChartComponent extends Component {
     render() {
-        const { state, confirmed, active, recovered, deaths } =  this.props.state
+        const { state_name, new_active, new_cured, new_death } =  this.props.state
 
         let stateName = ''
 
-        if(state === 'Total') {
+        if(state_name === '') {
             stateName = 'National Data'
         } else {
-            stateName = state
+            stateName = state_name
         }
 
         const data=[
-            ['COVID', 'Data'],
-            ['Active', parseInt(active)],
-            ['Recovered', parseInt(recovered)],
+            ['COVID', 'VALUE'],
+            ['Active', parseInt(new_active)],
+            ['Recovered', parseInt(new_cured)],
         ]
+
+        if(data[1][1] === NaN) {
+            return 0;
+        }
 
         return (
             <Chart
@@ -27,8 +31,8 @@ export class ChartComponent extends Component {
                     loader={<div>Loading Chart</div>}
                     data={data}
                     options={{
-                        title: `${stateName} - Confirmed Cases: ${confirmed}`,
-                        pieHole: 0.3,
+                        title: `${stateName} - Confirmed Cases: ${parseInt(new_cured) + parseInt(new_active) + parseInt(new_death)}`,
+                        pieHole: 0.4,
                     }}
                     rootProps={{ 'data-testid': '1' }}
                 />

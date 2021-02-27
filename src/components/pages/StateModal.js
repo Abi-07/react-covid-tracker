@@ -1,32 +1,22 @@
-import React, { Fragment, useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom';
-import ChartComponent from './ChartComponent'
-import Spinner from '../layout/Spinner'
-import CovidContext from '../../context/covid/covidContext'
+import React from 'react';
+import ChartComponent from '../covidstates/ChartComponent';
 import { Grid, LinearProgress } from '@material-ui/core';
 
 
-const State = ({ match }) => {
-    const covidContext = useContext(CovidContext)
-    const { loading,  stateData, getState } = covidContext
-
-    useEffect(() => {
-        getState(match.params.statecode)
-        // eslint-disable-next-line
-    }, [])
+const StateModal = ({ state }) => {
 
         const {
             state_name, 
             new_active, 
             new_cured, 
             new_death,
-        } = stateData
+        } = state
 
         const total = parseInt(new_active ) + parseInt(new_cured);
         const per = parseFloat(new_active/total)*100;
 
         var i=null
-        if (loading || !stateData) {
+        if (!state) {
             console.log("Loading...");
             return (
                 <div className="top-container">
@@ -56,7 +46,7 @@ const State = ({ match }) => {
                             {statenotes && <h5>State notes: {statenotes}</h5>} */}
                         </Grid>
                         <Grid item xs={12} md={6}>
-                            <ChartComponent state={stateData} />
+                            <ChartComponent state={state} />
                         </Grid>
                     </Grid>
                 </div>
@@ -74,5 +64,5 @@ const state = {
    
 }
 
-export default State
+export default StateModal;
 

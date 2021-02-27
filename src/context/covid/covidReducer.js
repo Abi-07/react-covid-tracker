@@ -6,7 +6,8 @@ export default (state, action) => {
         case GET_STATES:
             return {
                 ...state,
-                states: action.payload,
+                states: action.payload.data,
+                lastModified: action.payload.headers["last-modified"],
                 loading: false
             }
         case GET_STATE:

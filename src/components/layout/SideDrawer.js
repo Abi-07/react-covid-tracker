@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
+import { Drawer as MUIDrawer } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
@@ -18,15 +18,15 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
+import LinkIcon from '@material-ui/icons/Link';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import { SettingsApplications, VideoLibrary } from '@material-ui/icons';
 
-import Navbar from '../layout/Navbar';
+ const drawerWidth = 240;
 
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
+ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
@@ -86,13 +86,12 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-}));
+ }));  
 
-export default function SideDrawer() {
+const SideDrawer = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -102,33 +101,32 @@ export default function SideDrawer() {
   };
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
+   <div className={classes.root}>
+     <CssBaseline />
+     <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
+      <Toolbar>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={handleDrawerOpen}
+          edge="start"
+          className={clsx(classes.menuButton, {
               [classes.hide]: open,
             })}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            COVID-19 Tracker
-          </Typography>
-          {/* <Navbar /> */}
+        <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" noWrap>
+          Covid-19 Tracker
+        </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer
+      <MUIDrawer
         variant="permanent"
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
@@ -148,37 +146,37 @@ export default function SideDrawer() {
         </div>
         <Divider />
         <List>
-
           <ListItem button component={Link} to='/'>
-                <ListItemIcon><HomeIcon /></ListItemIcon>
-                <ListItemText primary='Home' />
+            <ListItemIcon><HomeIcon /></ListItemIcon>
+            <ListItemText primary='Home' />
           </ListItem>
-
-          <ListItem button component={Link} to='/about'>
-                <ListItemIcon><InfoIcon /></ListItemIcon>
-                <ListItemText primary='About' />
+          <ListItem button component={Link} to='/guidelines'>
+            <ListItemIcon><SettingsApplications /></ListItemIcon>
+            <ListItemText primary='GuideLines' />
           </ListItem>
-            {/* {['Home', 'Statewise', 'Guidelines', 'Vaccinations'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))} */}
+          <ListItem button component={Link} to='/links'>
+            <ListItemIcon><LinkIcon /></ListItemIcon>
+            <ListItemText primary='Important Links' />
+          </ListItem>
         </List>
         <Divider />
-        {/* <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-       
-      </main>
-    </div>
-  );
+        <List>
+        <ListItem button component={Link} to='/media'>
+                  <ListItemIcon><VideoLibrary /></ListItemIcon>
+                  <ListItemText primary='Media' />
+          </ListItem>
+          {/* <ListItem button component={Link} to='/'>
+                  <ListItemIcon><GetAppIcon /></ListItemIcon>
+                  <ListItemText primary='Downloads' />
+          </ListItem> */}
+          <ListItem button component={Link} to='/about'>
+                  <ListItemIcon><InfoIcon /></ListItemIcon>
+                  <ListItemText primary='About' />
+          </ListItem>
+        </List>
+      </MUIDrawer>
+   </div>
+  )
 }
+
+export default SideDrawer

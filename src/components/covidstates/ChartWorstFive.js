@@ -16,7 +16,7 @@ const ChartWorstFive = ( {worstArray} ) => {
             if(index === 0) {
             }
             else if(index <= 5) {
-                let ar = [element.state, parseInt(element.active)]
+                let ar = [element.state_name, parseInt(element.new_active)]
                 array.push(ar)
             }
             else{

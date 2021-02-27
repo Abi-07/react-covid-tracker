@@ -2,12 +2,21 @@ import React, { Fragment } from 'react'
 
 const About = () => {
     return (
-        <Fragment style={{ padding: '5%' }}>
-            <h1>About China Virus Tracker app</h1>
-            <p>App to get the latest china viurs updates</p>
+        <div className="top-container" style={about}>
+            <h1>About COVID-19 Tracker app</h1><br/>
+            <p>App to get the latest CHINA VIRUS updates in India.</p><br/>
             <p>Version: 1.0.0</p>
-        </Fragment>
+        </div>
     )
+}
+
+const about = {
+    width: '100%',
+    padding: '8%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+   
 }
 
 export default About

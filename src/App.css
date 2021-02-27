@@ -23,6 +23,11 @@ body {
   color: #333;
 }
 
+.App {
+  margin: 2rem;
+  padding-left: 2rem;
+}
+
 a {
   color: var(--primary-color);
   text-decoration: none;
@@ -42,6 +47,9 @@ img {
 
 /* Utilities */
 .container {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
   /* max-width: 1100px;
   margin: auto;
   overflow: hidden;
@@ -417,16 +425,29 @@ table th {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 }
 
 .totalLi {
   display: inline-block;
   margin: 2%;
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+.top-container {
+  margin-top: 7rem;
 }
 
 @media (max-width: 768px) {
   .totalLi {
     font-size: 1.5rem;
+  }
+  .flex-box {
+    flex-direction: column;
+  }
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100%;
   }
 }
