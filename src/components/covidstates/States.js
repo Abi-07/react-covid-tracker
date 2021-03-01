@@ -30,7 +30,6 @@ const States = () => {
                     <Grid item xs={12} md={3} key={index}>
                         <StateItem key={state.statecode} state={state} index={index} />
                     </Grid>
-                    // <div key={index} className="col-sm-12 col-md-4"><StateItem key={state.statecode} state={state} index={index} /></div>
                 )
                 )}
                 </Grid>

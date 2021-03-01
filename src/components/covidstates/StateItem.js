@@ -23,7 +23,6 @@ const StateItem = ({ state:
 
 
         return (
-            // <div className="card text-center">
                 <Paper className={classes.paper}>
                     <h3 style={stateName}>{state_name}</h3>
                     {per < 1.0 && new_active < 1000 ? <h5 className="text-success">Active: {new_active}</h5> :
@@ -32,9 +31,6 @@ const StateItem = ({ state:
                         <Button style={{marginTop: '2%'}} variant="outlined" color="primary">More</Button>
                     </Link>
                 </Paper>
-                // {/* {state !== 'State Unassigned' >} */}
-                
-            // {/* </div> */}
         )
 }
 

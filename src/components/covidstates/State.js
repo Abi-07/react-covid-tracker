@@ -52,8 +52,6 @@ const State = ({ match }) => {
                            <br /><h3>Active: {new_active}</h3>
                            <br /> <h3>Recovered: {new_cured}</h3>
                            <br /> <h3>Deaths: {new_death}</h3>
-                            {/* <h5>Migrated: {migratedother}</h5>
-                            {statenotes && <h5>State notes: {statenotes}</h5>} */}
                         </Grid>
                         <Grid item xs={12} md={6}>
                             <ChartComponent state={stateData} />
