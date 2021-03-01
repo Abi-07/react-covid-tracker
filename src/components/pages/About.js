@@ -4,7 +4,8 @@ const About = () => {
     return (
         <div className="top-container" style={about}>
             <h1>About COVID-19 Tracker app</h1><br/>
-            <p>App to get the latest CHINA VIRUS updates in India.</p><br/>
+            <p>App to get the latest COVID-19 updates in India.</p><br/>
+            <p>Uses data from <a href="https://www.mohfw.gov.in/data/datanew.json">https://www.mohfw.gov.in/data/datanew.json</a></p><br/>
             <p>Version: 1.0.0</p>
         </div>
     )

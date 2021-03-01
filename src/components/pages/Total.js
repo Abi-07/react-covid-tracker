@@ -49,7 +49,7 @@ const Total = () => {
                                         <li className="text-primary totalLi">Active: { new_active }</li>
                                         <li className="text-success totalLi">Recovered: { new_cured }</li>
                                         <li className="text-danger totalLi">Deaths: {new_death}</li>
-                                        <li className="text-success totalLi">Vaccinated: 1,42,42,547</li>
+                                        <li className="text-success totalLi">Vaccinated: 1,43,01,266</li>
                           </ul>
                     </Grid>
                 </Grid>
